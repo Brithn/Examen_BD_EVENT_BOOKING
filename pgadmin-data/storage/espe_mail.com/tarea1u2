@@ -1,0 +1,16 @@
+-- Tabla Tasks
+CREATE TABLE task (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    completed BOOLEAN NOT NULL,
+);
+-- Tabla estudiante
+CREATE TABLE estudiante (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    edad INT
+);
+
+-- Editamos la Tabla task con una clave foránea a estudiante
+ALTER TABLE tasks ADD COLUMN estudiante_id INT, 
+ADD CONSTRAINT fk_estudiante FOREIGN KEY (estudiante_id) REFERENCES estudiante(id);
