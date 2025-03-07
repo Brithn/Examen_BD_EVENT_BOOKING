@@ -26,21 +26,6 @@ class BookingService {
     }
     return booking;
   }
-
-  async update(id, changes) {
-    const booking = await this.findOne(id);
-    await booking.update({
-      ...changes,
-      update_at: new Date(), // Se actualiza el campo `update_at`
-    });
-    return booking;
-  }
-
-  async delete(id) {
-    const booking = await this.findOne(id);
-    await booking.destroy();
-    return { id };
-  }
 }
 
 module.exports = BookingService;

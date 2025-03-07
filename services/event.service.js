@@ -20,20 +20,6 @@ class EventService {
     return event;
   }
 
-  async update(id, changes) {
-    const event = await this.findOne(id);
-    await event.update({
-      ...changes,
-      update_at: new Date(), // Se actualiza el campo `update_at`
-    });
-    return event;
-  }
-
-  async delete(id) {
-    const event = await this.findOne(id);
-    await event.destroy();
-    return { id };
-  }
 }
 
 module.exports = EventService;
