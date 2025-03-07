@@ -12,10 +12,6 @@ const BookingSchema = {
   event_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: {
-      model: 'events', // nombre de la tabla a la que hace referencia
-      key: 'id', // clave primaria de la tabla events
-    },
   },
   user_email: {
     type: DataTypes.STRING,
@@ -23,7 +19,7 @@ const BookingSchema = {
   },
   num_tickets: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: false,  
   },
   createdAt: {
     allowNull: false,
@@ -41,7 +37,6 @@ const BookingSchema = {
 
 class Booking extends Model {
   static associate(models) {
-    // Relación con el modelo Event
     this.belongsTo(models.Event, { foreignKey: 'event_id', as: 'event' });
   }
 

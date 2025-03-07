@@ -3,6 +3,13 @@ const { models } = require('../libs/sequelize');
 
 class BookingService {
   async create(data) {
+    const { event_id, user_email, num_tickets } = data;
+
+    // Verificar si los campos requeridos están presentes
+    if (!event_id || !user_email || !num_tickets) {
+      throw boom.badRequest('Faltan campos requeridos: event_id, user_email, num_tickets');
+    }
+
     const newBooking = await models.Booking.create(data);
     return newBooking;
   }
